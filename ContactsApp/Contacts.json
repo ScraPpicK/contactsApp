@@ -1,0 +1,105 @@
+{
+    "contacts":
+        [
+            {
+                "firstName":"Vadym",
+                "lastName":"Patalakh",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Nastya",
+                "lastName":"Krachko",
+                "phoneNumber":"+380637865603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 15/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Anton",
+                "lastName":"Koval",
+                "phoneNumber":"+380931611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Yura",
+                "lastName":"Romanov",
+                "phoneNumber":"+380631891603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Maks",
+                "lastName":"Frol",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Lena",
+                "lastName":"Grach",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Ksysha",
+                "lastName":"Strizch",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Vitya",
+                "lastName":"Pohilko",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Artem",
+                "lastName":"Popov",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            },
+            {
+                "firstName":"Misha",
+                "lastName":"Antonov",
+                "phoneNumber":"+380631611603",
+                "city":"Zaporozhye",
+                "state":"",
+                "streetAddress1":"Voronezhska 14/5",
+                "streetAddress2":"",
+                "zipCode":"12345"
+            }
+        ]
+}

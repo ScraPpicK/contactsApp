@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactTableViewCell" id="PRh-Th-jUQ" customClass="ContactTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRh-Th-jUQ" id="KbZ-tX-luG">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Info" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2wc-yy-e8T">
+                        <rect key="frame" x="20" y="13.5" width="335" height="17"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2wc-yy-e8T" firstAttribute="centerY" secondItem="KbZ-tX-luG" secondAttribute="centerY" id="2Ys-hx-a5X"/>
+                    <constraint firstItem="2wc-yy-e8T" firstAttribute="centerX" secondItem="KbZ-tX-luG" secondAttribute="centerX" id="Eoo-Zg-bNO"/>
+                    <constraint firstItem="2wc-yy-e8T" firstAttribute="leading" secondItem="KbZ-tX-luG" secondAttribute="leading" constant="20" id="KOc-wr-Olh"/>
+                    <constraint firstAttribute="trailing" secondItem="2wc-yy-e8T" secondAttribute="trailing" constant="20" id="uAQ-O4-lUE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="infoTextField" destination="2wc-yy-e8T" id="Tpi-FT-Clt"/>
+            </connections>
+            <point key="canvasLocation" x="-8" y="-178"/>
+        </tableViewCell>
+    </objects>
+</document>
