@@ -6,21 +6,12 @@
 //  Copyright © 2018 Patalakh Vadim. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
 
-@class ContactTableViewCell;
-@protocol ContactTableViewCellDelegate
-
-- (void)tableViewCellInfoDidChanged:(ContactTableViewCell *)cell;
-
-@end
+extern NSString* const contactTableViewCellIdentifier;
 
 @interface ContactTableViewCell : UITableViewCell <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *infoTextField;
-
-@property (nonatomic, weak)     NSObject<ContactTableViewCellDelegate>  *delegate;
-@property (nonatomic, assign)   BOOL                                    acceptsTouches;
+- (void)setText:(NSString *)text;
 
 @end

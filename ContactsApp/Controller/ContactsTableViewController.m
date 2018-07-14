@@ -28,7 +28,7 @@
     [super viewDidLoad];
     
     UINib *cellNib = [UINib nibWithNibName:@"ContactTableViewCell" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"ContactTableViewCell"];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:contactTableViewCellIdentifier];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -93,13 +93,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactTableViewCell" forIndexPath:indexPath];
+    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:contactTableViewCellIdentifier forIndexPath:indexPath];
     
     NSString *firstName = self.contacts[indexPath.row].firstName;
     NSString *lastName = self.contacts[indexPath.row].lastName;
     
-    cell.acceptsTouches = YES;
-    cell.infoTextField.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    [cell setText:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
     
     return cell;
 }
@@ -121,7 +120,7 @@
     if ([segue.identifier isEqualToString:@"Show contact detail segue"])
     {
         DetailsTableViewController *detailsContr = (DetailsTableViewController *)segue.destinationViewController;
-        detailsContr.contact = (Contact *)sender;
+        [detailsContr setContact:sender];
     }
 }
 

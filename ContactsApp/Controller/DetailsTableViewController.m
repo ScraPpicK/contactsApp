@@ -7,11 +7,22 @@
 //
 
 #import "DetailsTableViewController.h"
-#import "ContactTableViewCell.h"
+#import "DetailsTableViewCell.h"
 #import "StoreManager.h"
 
-@interface DetailsTableViewController () <UITableViewDelegate, UITableViewDataSource, ContactTableViewCellDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+static NSString *const firstNameSectionName = @"First name";
+static NSString *const lastNameSectionName = @"Last name";
+static NSString *const phoneNumberSectionName = @"Phone number";
+static NSString *const streetAddressSectionName = @"Street address";
+static NSString *const additionalStreetAddressSectionName = @"";
+static NSString *const citySectionName = @"City";
+static NSString *const stateSectionName = @"State";
+static NSString *const zipSectionName = @"Zip code";
+
+@interface DetailsTableViewController () <DetailsTableViewCellDelegate>
+
+@property (nonatomic, strong)   Contact             *contact;
+@property (nonatomic, strong)   NSArray<NSString*>  *sectionNames;
 
 @end
 
@@ -20,24 +31,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UINib *cellNib = [UINib nibWithNibName:@"ContactTableViewCell" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"ContactTableViewCell"];
+    UINib *cellNib = [UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:detailsTableViewCellIdentifier];
+    
+    self.sectionNames = @[firstNameSectionName, lastNameSectionName, phoneNumberSectionName, streetAddressSectionName, additionalStreetAddressSectionName, citySectionName, stateSectionName, zipSectionName];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setContact:(Contact *)contact {
+    if (_contact == nil) {
+        _contact = contact;
+    }
 }
 
 - (IBAction)deleteContactButtonTap:(id)sender
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you really want to delete this contact?" preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self dismissViewControllerAnimated:YES completion:nil];
         [[StoreManager sharedManager] removeObject:self.contact];
@@ -54,163 +70,105 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return self.sectionNames.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 3)
-        return 2;
-    
     return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *string = nil;
-    
-    switch (section) {
-        case 0:
-            string = @"First name";
-            break;
-            
-        case 1:
-            string = @"Last name";
-            break;
-            
-        case 2:
-            string = @"Phone number";
-            break;
-            
-        case 3:
-            string = @"Street Address";
-            break;
-            
-        case 4:
-            string = @"City";
-            break;
-            
-        case 5:
-            string = @"State";
-            break;
-            
-        case 6:
-            string = @"Zip code";
-            break;
-            
-        default:
-            break;
-    }
-    
-    return string;
+    return self.sectionNames[section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactTableViewCell" forIndexPath:indexPath];
-    
-    NSString *string = nil;
+    DetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:detailsTableViewCellIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
     
     switch (indexPath.section) {
-        case 0:
-            string = self.contact.firstName;
+        case firstName:
+            [cell setText:self.contact.firstName withFieldName:firstName];
             break;
             
-        case 1:
-            string = self.contact.lastName;
+        case lastName:
+            [cell setText:self.contact.lastName withFieldName:lastName];
             break;
             
-        case 2:
-            string = self.contact.phoneNumber;
+        case phoneNumber:
+            [cell setText:self.contact.phoneNumber withFieldName:phoneNumber];
             break;
             
-        case 3:
-            switch (indexPath.row) {
-                case 0:
-                    string = self.contact.streetAddress1;
-                    break;
-                    
-                case 1:
-                    string = self.contact.streetAddress2;
-                    break;
-                    
-                default:
-                    break;
-            }
+        case streetAddress1:
+            [cell setText:self.contact.streetAddress1 withFieldName:streetAddress1];
             break;
             
-        case 4:
-            string = self.contact.city;
+        case streetAddress2:
+            [cell setText:self.contact.streetAddress2 withFieldName:streetAddress2];
             break;
             
-        case 5:
-            string = self.contact.state;
+        case city:
+            [cell setText:self.contact.city withFieldName:city];
             break;
             
-        case 6:
-            string = self.contact.zipCode;
+        case state:
+            [cell setText:self.contact.state withFieldName:state];
+            break;
+            
+        case zipCode:
+            [cell setText:self.contact.zipCode withFieldName:zipCode];
             break;
             
         default:
             break;
     }
-    
-    cell.acceptsTouches = NO;
-    cell.delegate = self;
-    cell.infoTextField.text = string;
     
     return cell;
 }
 
 #pragma mark - Contact table view cell delegate
 
-- (void)tableViewCellInfoDidChanged:(ContactTableViewCell *)cell
+- (void)tableViewCellTextDidChange:(NSString *)text forFieldName:(enum DetailsFieldNames)fieldName
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    switch (indexPath.section)
+    switch (fieldName)
     {
-        case 0:
-            self.contact.firstName = cell.infoTextField.text;
+        case firstName:
+            self.contact.firstName = text;
             break;
             
-        case 1:
-            self.contact.lastName = cell.infoTextField.text;
+        case lastName:
+            self.contact.lastName = text;
             break;
             
-        case 2:
-            self.contact.phoneNumber = cell.infoTextField.text;
+        case phoneNumber:
+            self.contact.phoneNumber = text;
             break;
             
-        case 3:
-            switch (indexPath.row) {
-                case 0:
-                    self.contact.streetAddress1 = cell.infoTextField.text;
-                    break;
-                    
-                case 1:
-                    self.contact.streetAddress2 = cell.infoTextField.text;
-                    
-                default:
-                    break;
-            }
+        case streetAddress1:
+            self.contact.streetAddress1 = text;
             break;
             
-        case 4:
-            self.contact.city = cell.infoTextField.text;
+        case streetAddress2:
+            self.contact.streetAddress2 = text;
             break;
             
-        case 5:
-            self.contact.state = cell.infoTextField.text;
+        case city:
+            self.contact.city = text;
             break;
             
-        case 6:
-            self.contact.zipCode = cell.infoTextField.text;
+        case state:
+            self.contact.state = text;
+            break;
+            
+        case zipCode:
+            self.contact.zipCode = text;
             break;
             
         default:
+            [[StoreManager sharedManager] saveChanges];
             break;
     }
-    
-    [[StoreManager sharedManager] saveChanges];
 }
 
 @end

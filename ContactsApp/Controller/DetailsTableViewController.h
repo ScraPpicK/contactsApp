@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Contact.h"
 
-@interface DetailsTableViewController : UIViewController
+@interface DetailsTableViewController : UITableViewController
 
-@property (nonatomic, strong)       Contact     *contact;
+- (void)setContact:(Contact *)contact;
 
 @end

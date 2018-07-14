@@ -20,6 +20,8 @@
 		DDD440592057DCFC008F46DB /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD440582057DCFC008F46DB /* ContactTableViewCell.m */; };
 		DDD4405C2057DF40008F46DB /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD4405B2057DF40008F46DB /* ContactsTableViewController.m */; };
 		DDD4405E2057E15A008F46DB /* Contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = DDD4405D2057E15A008F46DB /* Contacts.json */; };
+		FA381DC720EB6F2C0009BEDB /* DetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */; };
+		FA381DC820EB6F2C0009BEDB /* DetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,9 @@
 		DDD4405A2057DF40008F46DB /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
 		DDD4405B2057DF40008F46DB /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		DDD4405D2057E15A008F46DB /* Contacts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contacts.json; sourceTree = "<group>"; };
+		FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewCell.h; sourceTree = "<group>"; };
+		FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewCell.m; sourceTree = "<group>"; };
+		FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,9 @@
 				DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */,
 				DDD440572057DCFC008F46DB /* ContactTableViewCell.h */,
 				DDD440582057DCFC008F46DB /* ContactTableViewCell.m */,
+				FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */,
+				FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */,
+				FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 			files = (
 				DDD440562057DCD4008F46DB /* ContactTableViewCell.xib in Resources */,
 				DDD4403F2057D9D5008F46DB /* LaunchScreen.storyboard in Resources */,
+				FA381DC820EB6F2C0009BEDB /* DetailsTableViewCell.xib in Resources */,
 				DDD4403C2057D9D5008F46DB /* Assets.xcassets in Resources */,
 				DDD4403A2057D9D5008F46DB /* Main.storyboard in Resources */,
 				DDD4405E2057E15A008F46DB /* Contacts.json in Resources */,
@@ -205,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA381DC720EB6F2C0009BEDB /* DetailsTableViewCell.m in Sources */,
 				DDD440422057D9D5008F46DB /* main.m in Sources */,
 				DD5D656820591FBE00D5814C /* ContactsModel.xcdatamodeld in Sources */,
 				DD5D65652059125300D5814C /* StoreManager.m in Sources */,
@@ -347,7 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6C5FM2FT54;
+				DEVELOPMENT_TEAM = 5B394Q6B87;
 				INFOPLIST_FILE = ContactsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vadim.patalakh.ContactsApp;
@@ -362,7 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6C5FM2FT54;
+				DEVELOPMENT_TEAM = 5B394Q6B87;
 				INFOPLIST_FILE = ContactsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vadim.patalakh.ContactsApp;

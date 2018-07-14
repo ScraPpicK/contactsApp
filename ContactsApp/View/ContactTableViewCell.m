@@ -8,6 +8,14 @@
 
 #import "ContactTableViewCell.h"
 
+NSString* const contactTableViewCellIdentifier = @"contactTableViewCellIdentifier";
+
+@interface ContactTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UITextField *infoTextField;
+
+@end
+
 @implementation ContactTableViewCell
 
 - (void)awakeFromNib
@@ -17,15 +25,9 @@
     self.infoTextField.delegate = self;
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+- (void)setText:(NSString *)text
 {
-    if (self.acceptsTouches)
-        return self;
-    
-    if ([self.contentView pointInside:point withEvent:event])
-        return self.infoTextField;
-    
-    return nil;
+    self.infoTextField.text = text;
 }
 
 #pragma mark - Text field delegate
@@ -33,12 +35,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewCellInfoDidChanged:)])
-    {
-        [self.delegate tableViewCellInfoDidChanged:self];
-    }
-    
     return YES;
 }
 

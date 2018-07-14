@@ -125,7 +125,8 @@ static StoreManager *sharedManager;
     }
     
     NSError *error = nil;
-    if ([self.context save:&error] == NO) {
+    if ([self.context save:&error] == NO)
+    {
         NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
     }
 }
