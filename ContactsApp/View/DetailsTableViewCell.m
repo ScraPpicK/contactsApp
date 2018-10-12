@@ -19,6 +19,10 @@ NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellIdentifie
 
 @implementation DetailsTableViewCell
 
++ (NSString *)textTableViewCellIdentifier {
+    return detailsTableViewCellIdentifier;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -33,21 +37,19 @@ NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellIdentifie
     return nil;
 }
 
-- (void)setText:(NSString *)text withFieldName:(enum DetailsFieldNames)fieldName
+- (void)setText:(NSString *)text
 {
     self.textField.text = text;
-    self.tag = fieldName;
 }
 
 #pragma mark - Text field delegate
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tableViewCellTextDidChange:forFieldName:)])
+    if ([self.delegate respondsToSelector:@selector(tableViewCell:didChangeText:)])
     {
-        [self.delegate tableViewCellTextDidChange:textField.text forFieldName:(int)self.tag];
+        [self.delegate tableViewCell:self didChangeText:textField.text];
     }
-
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

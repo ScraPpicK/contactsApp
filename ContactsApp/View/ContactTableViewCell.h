@@ -6,12 +6,10 @@
 //  Copyright © 2018 Patalakh Vadim. All rights reserved.
 //
 
-#import "UIKit/UIKit.h"
+#import <UIKit/UIKit.h>
+#import "TableViewCellProtocol.h"
+#import "TextTableViewCellProtocol.h"
 
-extern NSString* const contactTableViewCellIdentifier;
-
-@interface ContactTableViewCell : UITableViewCell <UITextFieldDelegate>
-
-- (void)setText:(NSString *)text;
+@interface ContactTableViewCell : UITableViewCell <TableViewCellProtocol, TextTableViewCellProtocol>
 
 @end

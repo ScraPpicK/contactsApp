@@ -28,7 +28,8 @@
     [super viewDidLoad];
     
     UINib *cellNib = [UINib nibWithNibName:@"ContactTableViewCell" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:contactTableViewCellIdentifier];
+    NSString *tableViewCellIdentifier = [ContactTableViewCell textTableViewCellIdentifier];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:tableViewCellIdentifier];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -42,18 +43,11 @@
         NSError *error;
         NSDictionary * defaultContacts = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
         NSArray<NSDictionary *> * contactsArray = defaultContacts[@"contacts"];
-        [contactsArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [contactsArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull contactDictionary, NSUInteger idx, BOOL * _Nonnull stop) {
             @autoreleasepool
             {
                 Contact * contact = (Contact *)[[StoreManager sharedManager] createNewObjectForEntityName:@"Contact"];
-                contact.firstName = obj[@"firstName"];
-                contact.lastName  = obj[@"lastName"];
-                contact.phoneNumber = obj[@"phoneNumber"];
-                contact.streetAddress1 = obj[@"streetAddress1"];
-                contact.streetAddress2 = obj[@"streetAddress2"];
-                contact.state = obj[@"state"];
-                contact.city = obj[@"city"];
-                contact.zipCode = obj[@"zipCode"];
+                [contact fillWithDictionary:contactDictionary];
                 
                 [[StoreManager sharedManager] saveChanges];
             }
@@ -93,7 +87,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:contactTableViewCellIdentifier forIndexPath:indexPath];
+    NSString *tableViewCellIdentifier = [ContactTableViewCell textTableViewCellIdentifier];
+    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdentifier forIndexPath:indexPath];
     
     NSString *firstName = self.contacts[indexPath.row].firstName;
     NSString *lastName = self.contacts[indexPath.row].lastName;
@@ -119,8 +114,8 @@
 {
     if ([segue.identifier isEqualToString:@"Show contact detail segue"])
     {
-        DetailsTableViewController *detailsContr = (DetailsTableViewController *)segue.destinationViewController;
-        [detailsContr setContact:sender];
+        DetailsTableViewController *detailsController = (DetailsTableViewController *)segue.destinationViewController;
+        [detailsController setContact:sender];
     }
 }
 

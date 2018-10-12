@@ -36,15 +36,15 @@ static StoreManager *sharedManager;
     
     if (self)
     {
-        NSString * localStoreFileName = @"ContactsApp.sqlite";
-        NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString * basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+        NSString *localStoreFileName = @"ContactsApp.sqlite";
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
         if(basePath.length > 0)
         {
-            NSURL * storeFileURL = [NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:localStoreFileName]];
+            NSURL *storeFileURL = [NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:localStoreFileName]];
             
             NSError *error = nil;
-            NSManagedObjectModel * managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+            NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
             self.storeCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
             
             [self.storeCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeFileURL options:nil error:&error];
@@ -60,56 +60,37 @@ static StoreManager *sharedManager;
 
 - (NSManagedObject *)createNewObjectForEntityName:(NSString *)entityName
 {
-    __block NSManagedObject* entity = nil;
-    
-    [self.context performBlockAndWait:^
-     {
-         entity = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
-     }];
+    NSManagedObject *entity = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
     
     return entity;
 }
 
 - (NSArray *)getObjectsForEntityName:(NSString *)entityName
 {
-    __block NSArray *array = nil;
+    NSArray *array = nil;
     
-    [self.context performBlockAndWait:^{
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        request.returnsObjectsAsFaults = NO;
-        
-        if (!request)
-            return;
-        
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
-        request.sortDescriptors = @[sortDescriptor];
-        
-        NSError* error = nil;
-        array = [self.context executeFetchRequest:request error:&error];
-        if (error)
-        {
-            return;
-        }
-    }];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.returnsObjectsAsFaults = NO;
+    
+    if (!request)
+        return nil;
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(firstName)) ascending:YES];
+    request.sortDescriptors = @[sortDescriptor];
+    
+    NSError* error = nil;
+    array = [self.context executeFetchRequest:request error:&error];
+    if (error)
+    {
+        return nil;
+    }
     
     return array;
 }
 
 - (void)removeObject:(NSManagedObject *)object
 {
-    [self.context performBlockAndWait:^{
-         [self.context deleteObject:object];
-     }];
-}
-
-- (NSManagedObjectContext*)createLocalContext
-{
-    NSManagedObjectContext* localMOC = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    localMOC.parentContext = self.context;
-    localMOC.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
-    NSAssert(localMOC, @"Failed to create local context");
-    
-    return localMOC;
+     [self.context deleteObject:object];
 }
 
 - (NSManagedObjectContext *)defaultContext

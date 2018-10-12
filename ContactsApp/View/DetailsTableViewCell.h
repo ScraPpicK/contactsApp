@@ -7,30 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableViewCellProtocol.h"
+#import "TextTableViewCellProtocol.h"
 
-extern NSString* const detailsTableViewCellIdentifier;
-
-enum DetailsFieldNames {
-    firstName = 0,
-    lastName,
-    phoneNumber,
-    streetAddress1,
-    streetAddress2,
-    city,
-    state,
-    zipCode
-};
-
+@class DetailsTableViewCell;
 @protocol DetailsTableViewCellDelegate
 
-- (void)tableViewCellTextDidChange:(NSString *)text forFieldName:(enum DetailsFieldNames)fieldName;
+- (void)tableViewCell:(DetailsTableViewCell *)cell didChangeText:(NSString *)text;
 
 @end
 
-@interface DetailsTableViewCell : UITableViewCell
+@interface DetailsTableViewCell : UITableViewCell <TableViewCellProtocol, TextTableViewCellProtocol>
 
 @property (nonatomic, weak)     NSObject<DetailsTableViewCellDelegate>  *delegate;
-
-- (void)setText:(NSString *)text withFieldName:(enum DetailsFieldNames)fieldName;
 
 @end

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Patalakh Vadim. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "CoreData/CoreData.h"
 
 @interface Contact : NSManagedObject
@@ -20,5 +19,7 @@
 @property (nonatomic, copy)             NSString        *city;
 @property (nonatomic, copy)             NSString        *state;
 @property (nonatomic, copy)             NSString        *zipCode;
+
+- (void)fillWithDictionary:(NSDictionary *)dictionary;
 
 @end

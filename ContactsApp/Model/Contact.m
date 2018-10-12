@@ -26,4 +26,30 @@
 @dynamic state;
 @dynamic zipCode;
 
+- (void)fillWithDictionary:(NSDictionary *)dictionary {
+    NSString *firstNameKey = NSStringFromSelector(@selector(firstName));
+    self.firstName = dictionary[firstNameKey];
+    
+    NSString *lastNameKey = NSStringFromSelector(@selector(lastName));
+    self.lastName = dictionary[lastNameKey];
+    
+    NSString *phoneNumberKey = NSStringFromSelector(@selector(phoneNumber));
+    self.phoneNumber = dictionary[phoneNumberKey];
+    
+    NSString *streetAddress1Key = NSStringFromSelector(@selector(streetAddress1));
+    self.streetAddress1 = dictionary[streetAddress1Key];
+    
+    NSString *streetAddress2Key = NSStringFromSelector(@selector(streetAddress2));
+    self.streetAddress2 = dictionary[streetAddress2Key];
+    
+    NSString *stateKey = NSStringFromSelector(@selector(state));
+    self.state = dictionary[stateKey];
+    
+    NSString *cityKey = NSStringFromSelector(@selector(city));
+    self.city = dictionary[cityKey];
+    
+    NSString *zipCodeKey = NSStringFromSelector(@selector(zipCode));
+    self.zipCode = dictionary[zipCodeKey];
+}
+
 @end

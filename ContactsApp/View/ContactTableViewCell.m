@@ -10,13 +10,17 @@
 
 NSString* const contactTableViewCellIdentifier = @"contactTableViewCellIdentifier";
 
-@interface ContactTableViewCell ()
+@interface ContactTableViewCell () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *infoTextField;
 
 @end
 
 @implementation ContactTableViewCell
+
++ (NSString *)textTableViewCellIdentifier {
+    return contactTableViewCellIdentifier;
+}
 
 - (void)awakeFromNib
 {

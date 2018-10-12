@@ -49,6 +49,8 @@
 		FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewCell.h; sourceTree = "<group>"; };
 		FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewCell.m; sourceTree = "<group>"; };
 		FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
+		FA5248AB2170B350002EBC6E /* TextTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextTableViewCellProtocol.h; sourceTree = "<group>"; };
+		FA5248AC2170B7CC002EBC6E /* TableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCellProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +114,9 @@
 		DDD440492057DA2E008F46DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */,
 				DDD440572057DCFC008F46DB /* ContactTableViewCell.h */,
 				DDD440582057DCFC008F46DB /* ContactTableViewCell.m */,
+				DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */,
 				FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */,
 				FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */,
 				FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */,
@@ -136,6 +138,8 @@
 			children = (
 				DD5D65632059125300D5814C /* StoreManager.h */,
 				DD5D65642059125300D5814C /* StoreManager.m */,
+				FA5248AC2170B7CC002EBC6E /* TableViewCellProtocol.h */,
+				FA5248AB2170B350002EBC6E /* TextTableViewCellProtocol.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -166,7 +170,7 @@
 		DDD440272057D9D5008F46DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Patalakh Vadim";
 				TargetAttributes = {
 					DDD4402E2057D9D5008F46DB = {
@@ -262,6 +266,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -269,6 +274,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -317,6 +323,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -324,6 +331,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
