@@ -33,6 +33,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [UIView new];
     
     self.contacts = [[StoreManager sharedManager] getObjectsForEntityName:[Contact description]];
     
