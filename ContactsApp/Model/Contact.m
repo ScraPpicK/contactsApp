@@ -8,6 +8,15 @@
 
 #import "Contact.h"
 
+#define kFirstNameKey @"First name"
+#define kLastNameKey @"Last name"
+#define kPhoneNumberKey @"Phone number"
+#define kStreetAddress1Key @"Street address 1"
+#define kStreetAddress2Key @"Street address 2"
+#define kCityKey @"City"
+#define kStateKey @"State"
+#define kZipCodeKey @"Zip"
+
 @interface Contact ()
 
 @property (readwrite)      NSString    *contactID;
@@ -27,29 +36,14 @@
 @dynamic zipCode;
 
 - (void)fillWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary {
-    NSString *firstNameKey = NSStringFromSelector(@selector(firstName));
-    self.firstName = dictionary[firstNameKey];
-    
-    NSString *lastNameKey = NSStringFromSelector(@selector(lastName));
-    self.lastName = dictionary[lastNameKey];
-    
-    NSString *phoneNumberKey = NSStringFromSelector(@selector(phoneNumber));
-    self.phoneNumber = dictionary[phoneNumberKey];
-    
-    NSString *streetAddress1Key = NSStringFromSelector(@selector(streetAddress1));
-    self.streetAddress1 = dictionary[streetAddress1Key];
-    
-    NSString *streetAddress2Key = NSStringFromSelector(@selector(streetAddress2));
-    self.streetAddress2 = dictionary[streetAddress2Key];
-    
-    NSString *stateKey = NSStringFromSelector(@selector(state));
-    self.state = dictionary[stateKey];
-    
-    NSString *cityKey = NSStringFromSelector(@selector(city));
-    self.city = dictionary[cityKey];
-    
-    NSString *zipCodeKey = NSStringFromSelector(@selector(zipCode));
-    self.zipCode = dictionary[zipCodeKey];
+    self.firstName = dictionary[kFirstNameKey];
+    self.lastName = dictionary[kLastNameKey];
+    self.phoneNumber = dictionary[kPhoneNumberKey];
+    self.streetAddress1 = dictionary[kStreetAddress1Key];
+    self.streetAddress2 = dictionary[kStreetAddress2Key];
+    self.state = dictionary[kStateKey];
+    self.city = dictionary[kCityKey];
+    self.zipCode = dictionary[kZipCodeKey];
 }
 
 @end

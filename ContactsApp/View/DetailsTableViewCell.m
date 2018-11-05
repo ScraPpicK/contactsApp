@@ -27,6 +27,8 @@ static NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellId
     [super awakeFromNib];
     // Initialization code
     self.textField.delegate = self;
+    self.textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    self.textField.returnKeyType = UIReturnKeyDone;
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
@@ -40,6 +42,14 @@ static NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellId
 - (void)setText:(NSString *)text
 {
     self.textField.text = text;
+}
+
+- (void)setKeyboardType:(UIKeyboardType)keyboardType {
+    self.textField.keyboardType = keyboardType;
+}
+
+- (void)becomeActive {
+    [self.textField becomeFirstResponder];
 }
 
 #pragma mark - Text field delegate

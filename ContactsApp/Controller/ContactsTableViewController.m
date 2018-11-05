@@ -58,8 +58,7 @@ static NSString * const contactDetailsSegueIdentifier = @"Show contact detail se
 }
 
 - (IBAction)addNewContactButtonTap:(id)sender {
-    Contact *contact = [[Contact alloc] initWithContext:[StoreManager sharedManager].defaultContext];
-    [self performSegueWithIdentifier:contactDetailsSegueIdentifier sender:contact];
+    [self performSegueWithIdentifier:contactDetailsSegueIdentifier sender:nil];
 }
 
 #pragma mark - Table view data source
@@ -81,8 +80,8 @@ static NSString * const contactDetailsSegueIdentifier = @"Show contact detail se
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdentifier forIndexPath:indexPath];
     
     Contact *contact = self.contacts[indexPath.row];
-    NSString *firstName = contact.firstName;
-    NSString *lastName = contact.lastName;
+    NSString *firstName = contact.firstName ? contact.firstName : @"";
+    NSString *lastName = contact.lastName ? contact.lastName : @"";
     
     [cell setText:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
     

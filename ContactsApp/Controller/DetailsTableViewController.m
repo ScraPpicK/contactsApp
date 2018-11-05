@@ -30,10 +30,16 @@ enum DetailsFieldNames : NSUInteger {
     DetailsFieldZipCode
 };
 
+enum ViewMode : NSUInteger {
+    ViewModeCreate = 0,
+    ViewModeChange
+};
+
 @interface DetailsTableViewController () <DetailsTableViewCellDelegate>
 
 @property (nonatomic, strong)   Contact             *contact;
 @property (nonatomic, strong)   NSArray<NSString*>  *sectionNames;
+@property (nonatomic)           enum ViewMode       viewMode;
 
 @end
 
@@ -53,12 +59,53 @@ enum DetailsFieldNames : NSUInteger {
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.viewMode = self.contact ? ViewModeChange : ViewModeCreate;
+
+    switch (self.viewMode) {
+        case ViewModeCreate: {
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveContact)];
+            self.navigationItem.rightBarButtonItem = item;
+            self.contact = [[Contact alloc] initWithContext:[StoreManager sharedManager].defaultContext];
+            break;
+        }
+            
+        case ViewModeChange: {
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteContact)];
+            self.navigationItem.rightBarButtonItem = item;
+            break;
+        }
+    }
+}
+
 - (void)setContact:(Contact *)contact {
     _contact = contact;
 }
 
-- (IBAction)deleteContactButtonTap:(id)sender
-{
+- (void)saveContact {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Missing information." message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:action];
+    
+    if (!self.contact.firstName && !self.contact.lastName) {
+        alertController.message = @"You should fill first name or last name field.";
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+    
+    if (!self.contact.phoneNumber) {
+        alertController.message = @"Phone number is a mandatory field to fill.";
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+
+    [[StoreManager sharedManager] saveChanges];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)deleteContact {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you really want to delete this contact?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
@@ -74,6 +121,10 @@ enum DetailsFieldNames : NSUInteger {
     [alert addAction:deleteAction];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)deleteContactButtonTap:(id)sender {
+    [self deleteContact];
 }
 
 #pragma mark - Table view data source
@@ -111,6 +162,7 @@ enum DetailsFieldNames : NSUInteger {
             
         case DetailsFieldPhoneNumber:
             [cell setText:self.contact.phoneNumber];
+            [cell setKeyboardType:UIKeyboardTypePhonePad];
             break;
             
         case DetailsFieldStreetAddress1:
@@ -131,6 +183,7 @@ enum DetailsFieldNames : NSUInteger {
             
         case DetailsFieldZipCode:
             [cell setText:self.contact.zipCode];
+            [cell setKeyboardType:UIKeyboardTypePhonePad];
             break;
     }
     
@@ -176,7 +229,14 @@ enum DetailsFieldNames : NSUInteger {
             break;
     }
 
-    [[StoreManager sharedManager] saveChanges];
+    if (fieldNameIdentifier < self.sectionNames.count) {
+        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:0 inSection:fieldNameIdentifier + 1];
+        DetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
+        [cell becomeActive];
+    }
+    
+    if (self.viewMode == ViewModeChange)
+        [[StoreManager sharedManager] saveChanges];
 }
 
 @end

@@ -21,4 +21,7 @@
 
 @property (nonatomic, weak)     NSObject<DetailsTableViewCellDelegate>  *delegate;
 
+- (void)becomeActive;
+- (void)setKeyboardType:(UIKeyboardType)keyboardType;
+
 @end

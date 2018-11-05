@@ -56,13 +56,7 @@
                             <outlet property="delegate" destination="ax5-xr-2BO" id="A6n-mm-Bp3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Details" id="uGs-Hz-Gi5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="7Oz-Bx-gNi">
-                            <connections>
-                                <action selector="deleteContactButtonTap:" destination="ax5-xr-2BO" id="hzA-lj-MnP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Details" id="uGs-Hz-Gi5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ZL-7t-ClV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

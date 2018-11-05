@@ -11,8 +11,8 @@
 @interface Contact : NSManagedObject
 
 @property (nonatomic, readonly, copy, nonnull)  NSString        *contactID;
-@property (nonatomic, copy, nonnull)            NSString        *firstName;
-@property (nonatomic, copy, nonnull)            NSString        *lastName;
+@property (nonatomic, copy)                     NSString        *firstName;
+@property (nonatomic, copy)                     NSString        *lastName;
 @property (nonatomic, copy, nonnull)            NSString        *phoneNumber;
 @property (nonatomic, copy, nullable)           NSString        *streetAddress1;
 @property (nonatomic, copy, nullable)           NSString        *streetAddress2;
