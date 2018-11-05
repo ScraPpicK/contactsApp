@@ -9,7 +9,7 @@
 #import "DetailsTableViewCell.h"
 #import "StoreManager.h"
 
-NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellIdentifier";
+static NSString* const detailsTableViewCellIdentifier = @"detailsTableViewCellIdentifier";
 
 @interface DetailsTableViewCell () <UITextFieldDelegate>
 

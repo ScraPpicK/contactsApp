@@ -8,13 +8,7 @@
 
 #import "ContactTableViewCell.h"
 
-NSString* const contactTableViewCellIdentifier = @"contactTableViewCellIdentifier";
-
-@interface ContactTableViewCell () <UITextFieldDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextField *infoTextField;
-
-@end
+static NSString* const contactTableViewCellIdentifier = @"contactTableViewCellIdentifier";
 
 @implementation ContactTableViewCell
 
@@ -22,22 +16,13 @@ NSString* const contactTableViewCellIdentifier = @"contactTableViewCellIdentifie
     return contactTableViewCellIdentifier;
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    self.infoTextField.delegate = self;
-}
-
-- (void)setText:(NSString *)text
-{
-    self.infoTextField.text = text;
+- (void)setText:(NSString *)text {
+    self.textLabel.text = text;
 }
 
 #pragma mark - Text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }

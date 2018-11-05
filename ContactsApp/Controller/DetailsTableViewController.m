@@ -19,7 +19,7 @@ static NSString *const citySectionName = @"City";
 static NSString *const stateSectionName = @"State";
 static NSString *const zipSectionName = @"Zip code";
 
-enum DetailsFieldNames {
+enum DetailsFieldNames : NSUInteger {
     DetailsFieldFirstName = 0,
     DetailsFieldLastName,
     DetailsFieldPhoneNumber,

@@ -48,6 +48,9 @@ static StoreManager *sharedManager;
             self.storeCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
             
             [self.storeCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeFileURL options:nil error:&error];
+            if (error) {
+                
+            }
             
             self.context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
             NSAssert(self.context, @"Failed to initialize primary main queue context");
@@ -67,7 +70,7 @@ static StoreManager *sharedManager;
 
 - (NSArray *)getObjectsForEntityName:(NSString *)entityName
 {
-    NSArray *array = nil;
+    NSArray<NSManagedObject *> *array = nil;
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     request.returnsObjectsAsFaults = NO;

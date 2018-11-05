@@ -10,16 +10,16 @@
 
 @interface Contact : NSManagedObject
 
-@property (nonatomic, readonly, copy)   NSString        *contactID;
-@property (nonatomic, copy)             NSString        *firstName;
-@property (nonatomic, copy)             NSString        *lastName;
-@property (nonatomic, copy)             NSString        *phoneNumber;
-@property (nonatomic, copy)             NSString        *streetAddress1;
-@property (nonatomic, copy)             NSString        *streetAddress2;
-@property (nonatomic, copy)             NSString        *city;
-@property (nonatomic, copy)             NSString        *state;
-@property (nonatomic, copy)             NSString        *zipCode;
+@property (nonatomic, readonly, copy, nonnull)  NSString        *contactID;
+@property (nonatomic, copy, nonnull)            NSString        *firstName;
+@property (nonatomic, copy, nonnull)            NSString        *lastName;
+@property (nonatomic, copy, nonnull)            NSString        *phoneNumber;
+@property (nonatomic, copy, nullable)           NSString        *streetAddress1;
+@property (nonatomic, copy, nullable)           NSString        *streetAddress2;
+@property (nonatomic, copy, nullable)           NSString        *city;
+@property (nonatomic, copy, nullable)           NSString        *state;
+@property (nonatomic, copy, nullable)           NSString        *zipCode;
 
-- (void)fillWithDictionary:(NSDictionary *)dictionary;
+- (void)fillWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface Contact ()
 
-@property (nonatomic, readwrite, copy)      NSString    *contactID;
+@property (readwrite)      NSString    *contactID;
 
 @end
 
@@ -26,7 +26,7 @@
 @dynamic state;
 @dynamic zipCode;
 
-- (void)fillWithDictionary:(NSDictionary *)dictionary {
+- (void)fillWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary {
     NSString *firstNameKey = NSStringFromSelector(@selector(firstName));
     self.firstName = dictionary[firstNameKey];
     

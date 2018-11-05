@@ -16,10 +16,10 @@
 		DDD4403F2057D9D5008F46DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD4403D2057D9D5008F46DB /* LaunchScreen.storyboard */; };
 		DDD440422057D9D5008F46DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD440412057D9D5008F46DB /* main.m */; };
 		DDD440542057DB8C008F46DB /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD440532057DB8C008F46DB /* Contact.m */; };
-		DDD440562057DCD4008F46DB /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */; };
 		DDD440592057DCFC008F46DB /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD440582057DCFC008F46DB /* ContactTableViewCell.m */; };
 		DDD4405C2057DF40008F46DB /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD4405B2057DF40008F46DB /* ContactsTableViewController.m */; };
 		DDD4405E2057E15A008F46DB /* Contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = DDD4405D2057E15A008F46DB /* Contacts.json */; };
+		FA0905142190A20700ED4375 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0905132190A20700ED4375 /* ContactTableViewCell.xib */; };
 		FA381DC720EB6F2C0009BEDB /* DetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */; };
 		FA381DC820EB6F2C0009BEDB /* DetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -40,12 +40,12 @@
 		DDD440412057D9D5008F46DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDD440522057DB8C008F46DB /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		DDD440532057DB8C008F46DB /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		DDD440572057DCFC008F46DB /* ContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		DDD440582057DCFC008F46DB /* ContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		DDD4405A2057DF40008F46DB /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
 		DDD4405B2057DF40008F46DB /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		DDD4405D2057E15A008F46DB /* Contacts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contacts.json; sourceTree = "<group>"; };
+		FA0905132190A20700ED4375 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewCell.h; sourceTree = "<group>"; };
 		FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewCell.m; sourceTree = "<group>"; };
 		FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			children = (
 				DDD440572057DCFC008F46DB /* ContactTableViewCell.h */,
 				DDD440582057DCFC008F46DB /* ContactTableViewCell.m */,
-				DDD440552057DCD4008F46DB /* ContactTableViewCell.xib */,
+				FA0905132190A20700ED4375 /* ContactTableViewCell.xib */,
 				FA381DC420EB6F2C0009BEDB /* DetailsTableViewCell.h */,
 				FA381DC520EB6F2C0009BEDB /* DetailsTableViewCell.m */,
 				FA381DC620EB6F2C0009BEDB /* DetailsTableViewCell.xib */,
@@ -202,7 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDD440562057DCD4008F46DB /* ContactTableViewCell.xib in Resources */,
+				FA0905142190A20700ED4375 /* ContactTableViewCell.xib in Resources */,
 				DDD4403F2057D9D5008F46DB /* LaunchScreen.storyboard in Resources */,
 				FA381DC820EB6F2C0009BEDB /* DetailsTableViewCell.xib in Resources */,
 				DDD4403C2057D9D5008F46DB /* Assets.xcassets in Resources */,
